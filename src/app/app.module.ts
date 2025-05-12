@@ -5,6 +5,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductComponent } from './product/product.component';
+import { ProductAddComponent } from "./product-add/product-add.component";
+import { ProductListComponent } from "./product-list/product-list.component";
+import { ProductSummaryComponent } from './product-summary/product-summary.component';
 
 @NgModule({
   declarations: [
@@ -14,8 +17,11 @@ import { ProductComponent } from './product/product.component';
   imports: [
     CommonModule,
     BrowserModule,
-    AppRoutingModule
-  ],
+    AppRoutingModule,
+    ProductAddComponent,
+    ProductListComponent,
+    ProductSummaryComponent
+],
   providers: [],
   bootstrap: [AppComponent]
 })
