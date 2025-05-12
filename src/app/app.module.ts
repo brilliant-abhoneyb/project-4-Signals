@@ -8,19 +8,21 @@ import { ProductComponent } from './product/product.component';
 import { ProductAddComponent } from "./product-add/product-add.component";
 import { ProductListComponent } from "./product-list/product-list.component";
 import { ProductSummaryComponent } from './product-summary/product-summary.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductComponent
+    ProductComponent,
+    ProductAddComponent,
+    ProductListComponent,
+    ProductSummaryComponent
   ],
   imports: [
     CommonModule,
     BrowserModule,
     AppRoutingModule,
-    ProductAddComponent,
-    ProductListComponent,
-    ProductSummaryComponent
+    ReactiveFormsModule,
 ],
   providers: [],
   bootstrap: [AppComponent]

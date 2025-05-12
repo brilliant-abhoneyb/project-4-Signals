@@ -1,9 +1,9 @@
-<div class="card">
+<form class="card" [formGroup]="productForm" (ngSubmit)="addProduct()">
     <div class="card__content">
         <div class="card__content-element card__content-element-dropdown">
             <div class="element__group">
                 <label>Product</label>
-                <select class="form__control form__control-dropdown">
+                <select class="form__control form__control-dropdown" formControlName="code">
                     <option value="001">Select Product</option>
                     <option value="002">Rice</option>
                     <option value="003">Sugar</option>
@@ -15,19 +15,19 @@
         <div class="card__content-element">
             <div class="element__group">
                 <label>Quantity</label>
-                <input class="form__control">
+                <input class="form__control" formControlName="quantity">
             </div>
         </div>
         <div class="card__content-element">
             <div class="element__group">
                 <label>Price</label>
-                <input class="form__control">
+                <input class="form__control" formControlName="price">
             </div>
         </div>
         <div class="card__content-element">
             <div class="element__group">
-                <a class="button">Add Product</a>
+                <button class="button" type="submit">Add Product</button>
             </div>
         </div>
     </div>
-</div>
+</form>

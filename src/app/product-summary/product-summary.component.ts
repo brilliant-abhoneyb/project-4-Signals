@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-product-summary',
-  imports: [],
   templateUrl: './product-summary.component.html',
   styleUrl: './product-summary.component.css'
 })

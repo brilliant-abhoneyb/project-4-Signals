@@ -26,5 +26,6 @@
     padding: 10px;
     background: hsla(0, 0%, 90%, 0.882);
     border-radius: 10px;
+    border: none;
     cursor: pointer;
 }
