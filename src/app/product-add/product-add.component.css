@@ -1,0 +1,30 @@
+.card{
+    width: 100%;
+}
+
+.card__content{
+    margin: 10px 30px 10px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.element__group{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.card__content-element-dropdown{
+    width: 25%;
+}
+
+.form__control-dropdown{
+    width: 100%;
+}
+
+.button{
+    padding: 10px;
+    background: hsla(0, 0%, 90%, 0.882);
+    border-radius: 10px;
+    cursor: pointer;
+}

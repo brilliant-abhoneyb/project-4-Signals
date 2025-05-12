@@ -1,0 +1,30 @@
+.card{
+    width: 100%;
+}
+
+.card__content{
+    display: flex;
+    justify-content: space-between;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+  
+.table thead {
+    background-color: #f9f9f9;
+}
+
+.table th, .table td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ccc;
+} 
+
+button{
+    padding: 10px;
+    background: hsla(0, 0%, 90%, 0.882);
+    border-radius: 10px;
+    cursor: pointer;
+}
