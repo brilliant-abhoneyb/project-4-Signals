@@ -22,8 +22,14 @@
     border: 1px solid #ccc;
 } 
 
-button{
-    padding: 10px;
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.button{
+    padding: 0 10px;
     background: hsla(0, 0%, 90%, 0.882);
     border-radius: 10px;
     cursor: pointer;

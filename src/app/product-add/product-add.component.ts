@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MainService } from '../service/main.service';
+import { Product } from '../models/product.model';
 
 @Component({
   selector: 'app-product-add',
@@ -25,5 +26,19 @@ export class ProductAddComponent {
     });
   }
 
-  addProduct() {}
+  addProduct() {
+    let quantity = this.productForm.value.quantity as number;
+    let price = this.productForm.value.price as number;
+    let total = quantity * price;
+
+    const obj: Product={
+      saleNumber: this.service.productList().length+1,
+      code: this.productForm.value.code as string,
+      name: this.productForm.value.name as string,
+      price: price,
+      quantity: quantity,
+      total: total
+    }
+    this.service.addProduct(obj)
+  }
 }
