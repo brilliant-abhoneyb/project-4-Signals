@@ -44,7 +44,6 @@ export class MainService {
   totalSum = computed(()=> this.productList().reduce((prev:any, curr:Product)=>{
     return prev+curr.total
   }, 0))
-
   totalTax = computed(()=> (this.totalSum()*7)/100);
   totalNet = computed(()=> (this.totalSum()+this.totalTax()));
 }
