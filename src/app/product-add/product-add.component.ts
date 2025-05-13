@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, effect } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MainService } from '../service/main.service';
 import { Product } from '../models/product.model';
@@ -24,6 +24,17 @@ export class ProductAddComponent {
       price: this.builder.control(0),
       total: this.builder.control(0)
     });
+
+    effect(()=>{
+      this.productForm.setValue({
+        saleNumber: this.service.productItem().saleNumber,
+        code: this.service.productItem().code,
+        name: this.service.productItem().name,
+        quantity: this.service.productItem().quantity,
+        price: this.service.productItem().price,
+        total: this.service.productItem().total,
+      })
+    })
   }
 
   addProduct() {

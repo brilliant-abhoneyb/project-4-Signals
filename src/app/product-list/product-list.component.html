@@ -21,7 +21,7 @@
                     <td>{{item.quantity}}</td>
                     <td>{{item.total}}</td>
                     <td class="buttons">
-                        <a class="button">Edit</a>
+                        <a class="button" (click)="updateItemData(item.saleNumber)">Edit</a>
                         <a class="button" (click)="deleteItem(item.saleNumber)">Delete</a>
                     </td>
                 </tr>

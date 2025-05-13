@@ -13,4 +13,8 @@ export class ProductListComponent {
   deleteItem(saleNumber:any) {
     this.service.deleteProduct(saleNumber)
   }
+
+  updateItemData(saleNumber:any){
+    this.service.getProductByCode(saleNumber);
+  }
 }

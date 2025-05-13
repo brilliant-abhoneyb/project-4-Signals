@@ -9,6 +9,15 @@ export class MainService {
   constructor() { }
 
   productList=signal<Product[]>([]);
+  productItem=signal<Product>({
+    saleNumber: 0,
+    code: '',
+    name: '',
+    price: 0,
+    quantity: 1,
+    total: 0
+  })
+
 
   addProduct(product:Product){
     this.productList.update((previous: Product[]) => [...previous, product]);
@@ -19,6 +28,10 @@ export class MainService {
       this.productList().filter(item => item.saleNumber !== saleNumber)
     );
   }  
+
+  getProductByCode(saleNumber:number){
+    this.productItem.set(this.productList().find(item=>item.saleNumber===saleNumber) as Product);
+  }
 
   totalQuantity = computed(()=>this.productList().length)
   totalSum = computed(()=> this.productList().reduce((prev:any, curr:Product)=>{
