@@ -1,1 +1,24 @@
-<p>product-summary works!</p>
+<div class="card">
+    <div class="card__content">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>Total Quantity</td>
+                    <td>{{service.totalQuantity()}}</td>
+                </tr>
+                <tr>
+                    <td>Total Sum</td>
+                    <td>{{service.totalSum()}}</td>
+                </tr>
+                <tr>
+                    <td>Total Tax</td>
+                    <td>{{service.totalTax()}}</td>
+                </tr>
+                <tr>
+                    <td><b>Total Net</b></td>
+                    <td><b>{{service.totalNet()}}</b></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MainService } from '../service/main.service';
 
 @Component({
   standalone: false,
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './product-summary.component.css'
 })
 export class ProductSummaryComponent {
-
+  constructor(public service:MainService) {}
 }

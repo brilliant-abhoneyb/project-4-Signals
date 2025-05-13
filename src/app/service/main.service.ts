@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, computed } from '@angular/core';
 import { Product } from '../models/product.model';
 
 @Injectable({
@@ -13,4 +13,12 @@ export class MainService {
   addProduct(product:Product){
     this.productList.update((previous: Product[]) => [...previous, product]);
   }
+
+  totalQuantity = computed(()=>this.productList().length)
+  totalSum = computed(()=> this.productList().reduce((prev:any, curr:Product)=>{
+    return prev+curr.total
+  }, 0))
+
+  totalTax = computed(()=> (this.totalSum()*7)/100);
+  totalNet = computed(()=> (this.totalSum()+this.totalTax()));
 }

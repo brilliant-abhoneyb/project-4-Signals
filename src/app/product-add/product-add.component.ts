@@ -39,7 +39,14 @@ export class ProductAddComponent {
       quantity: quantity,
       total: total
     }
-    this.service.addProduct(obj)
+    this.service.addProduct(obj);
+    this.productForm.setValue(
+      {saleNumber:0, code: '', name: '',
+        quantity: 1,
+        price: 0,
+        total: null
+      }
+    )
   }
 
   productChange(element:any){
