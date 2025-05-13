@@ -41,4 +41,9 @@ export class ProductAddComponent {
     }
     this.service.addProduct(obj)
   }
+
+  productChange(element:any){
+    let productName = element.target['options'][element.target['options'].selectedIndex].text;
+    this.productForm.controls['name'].setValue(productName);
+  }
 }

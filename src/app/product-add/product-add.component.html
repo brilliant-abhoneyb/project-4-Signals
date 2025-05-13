@@ -3,8 +3,8 @@
         <div class="card__content-element card__content-element-dropdown">
             <div class="element__group">
                 <label>Product</label>
-                <select class="form__control form__control-dropdown" formControlName="code">
-                    <option value="001">Select Product</option>
+                <select class="form__control form__control-dropdown" formControlName="code" (change)="productChange($event)">
+                    <option value="001">Water</option>
                     <option value="002">Rice</option>
                     <option value="003">Sugar</option>
                     <option value="004">Poridge</option>
