@@ -3,7 +3,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Sale Nunber</th>
+                    <th class="table__cell">Sale Nunber</th>
                     <th>Code</th>
                     <th>Name</th>
                     <th>Price</th>
@@ -21,8 +21,10 @@
                     <td>{{item.quantity}}</td>
                     <td>{{item.total}}</td>
                     <td class="buttons">
-                        <a class="button" (click)="updateItemData(item.saleNumber)">Edit</a>
-                        <a class="button" (click)="deleteItem(item.saleNumber)">Delete</a>
+                        <div class="buttons__container">
+                            <a class="button" (click)="updateItemData(item.saleNumber)">Edit</a>
+                            <a class="button" (click)="deleteItem(item.saleNumber)">Delete</a>
+                        </div>
                     </td>
                 </tr>
             </tbody>

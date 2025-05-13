@@ -17,6 +17,10 @@
     background-color: #f9f9f9;
 }
 
+thead th:first-child {
+    width: 15%;
+}
+
 .table th, .table td {
     padding: 8px;
     text-align: left;
@@ -24,14 +28,18 @@
 } 
 
 .buttons{
+    width: 10%;
+}
+
+.buttons__container{
     display: flex;
     justify-content: space-between;
-    gap: 20px;
+    gap: 50px;
 }
 
 .button{
     padding: 0 10px;
     background: hsla(0, 0%, 90%, 0.882);
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
 }
