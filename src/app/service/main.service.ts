@@ -23,6 +23,13 @@ export class MainService {
     this.productList.update((previous: Product[]) => [...previous, product]);
   }
 
+  updateProduct(product:Product){
+    let newArray=this.productList().map(item=>{
+      return item.saleNumber===product.saleNumber?product:item
+    });
+    this.productList.set(newArray);
+  }
+
   deleteProduct(saleNumber: number) {
     this.productList.set(
       this.productList().filter(item => item.saleNumber !== saleNumber)

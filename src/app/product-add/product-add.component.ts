@@ -11,6 +11,7 @@ import { Product } from '../models/product.model';
 })
 export class ProductAddComponent {
   productForm:any;
+  buttonText="Add Product"
 
   constructor(
     private builder:FormBuilder,
@@ -34,6 +35,10 @@ export class ProductAddComponent {
         price: this.service.productItem().price,
         total: this.service.productItem().total,
       })
+      const item = this.service.productItem();
+      if (item?.saleNumber != null && item.saleNumber > 0) {
+        this.buttonText = "Update";
+      }      
     })
   }
 
@@ -41,23 +46,33 @@ export class ProductAddComponent {
     let quantity = this.productForm.value.quantity as number;
     let price = this.productForm.value.price as number;
     let total = quantity * price;
+    let saleNumber = this.productForm.value.saleNumber as number;
 
     const obj: Product={
-      saleNumber: this.service.productList().length+1,
+      saleNumber: 0,
       code: this.productForm.value.code as string,
       name: this.productForm.value.name as string,
       price: price,
       quantity: quantity,
       total: total
     }
-    this.service.addProduct(obj);
+    if(saleNumber == 0){
+      const maxId = this.service.productList().length > 0? 
+      Math.max(...this.service.productList().map(item => item.saleNumber ?? 0)) : 0;
+      obj.saleNumber = maxId + 1;
+      this.service.addProduct(obj);
+    }else{
+      obj.saleNumber = saleNumber;
+      this.service.updateProduct(obj);
+    }
     this.productForm.setValue(
       {saleNumber:0, code: '', name: '',
         quantity: 1,
         price: 0,
-        total: null
+        total: 0
       }
     )
+    this.buttonText = "Add Product"
   }
 
   productChange(element:any){
