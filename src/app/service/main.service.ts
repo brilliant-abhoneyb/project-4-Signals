@@ -14,6 +14,12 @@ export class MainService {
     this.productList.update((previous: Product[]) => [...previous, product]);
   }
 
+  deleteProduct(saleNumber: number) {
+    this.productList.set(
+      this.productList().filter(item => item.saleNumber !== saleNumber)
+    );
+  }  
+
   totalQuantity = computed(()=>this.productList().length)
   totalSum = computed(()=> this.productList().reduce((prev:any, curr:Product)=>{
     return prev+curr.total

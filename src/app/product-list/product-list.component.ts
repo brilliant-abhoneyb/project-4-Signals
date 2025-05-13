@@ -9,4 +9,8 @@ import { MainService } from '../service/main.service';
 })
 export class ProductListComponent {
   constructor(public service:MainService) {}
+
+  deleteItem(saleNumber:any) {
+    this.service.deleteProduct(saleNumber)
+  }
 }

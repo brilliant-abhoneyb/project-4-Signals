@@ -22,7 +22,7 @@
                     <td>{{item.total}}</td>
                     <td class="buttons">
                         <a class="button">Edit</a>
-                        <a class="button">Delete</a>
+                        <a class="button" (click)="deleteItem(item.saleNumber)">Delete</a>
                     </td>
                 </tr>
             </tbody>
