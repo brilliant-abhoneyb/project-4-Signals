@@ -1,0 +1,15 @@
+<div class="navbar__container">
+  <nav class="navbar__content">
+    <a class="navbar__link" href="#">{{ translations().main }}</a>
+    <a class="navbar__link" href="#">{{ translations().catalog }}</a>
+    <a class="navbar__link" href="#">{{ translations().about }}</a>
+
+    <div class="dropdown">
+      <select (change)="changeLanguage($event)">
+        <option value="en">English</option>
+        <option value="ru">Russian</option>
+        <option value="ja">Japanese</option>
+      </select>
+    </div>
+  </nav>
+</div>

@@ -4,8 +4,8 @@ import { MainService } from '../service/main.service';
 import { Product } from '../models/product.model';
 
 @Component({
-  selector: 'app-product-add',
   standalone: false,
+  selector: 'app-product-add',
   templateUrl: './product-add.component.html',
   styleUrl: './product-add.component.css'
 })
