@@ -1,7 +1,6 @@
-import { Component, effect } from '@angular/core';
+import { Component, computed, effect } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MainService } from '../service/main.service';
-import { Product } from '../models/product.model';
 import { TranslationService } from '../service/translation.service';
 
 @Component({
@@ -11,8 +10,14 @@ import { TranslationService } from '../service/translation.service';
   styleUrl: './product-add.component.css'
 })
 export class ProductAddComponent {
-  productForm:any;
-  buttonText="Add Product"
+  productForm: any;
+
+  buttonText = computed(() => {
+    const saleNumber = this.productForm?.value?.saleNumber ?? 0;
+    return saleNumber > 0
+      ? this.translation.translations().updateProduct
+      : this.translation.translations().addProduct;
+  });
 
   constructor(
     private builder: FormBuilder,
@@ -28,63 +33,57 @@ export class ProductAddComponent {
       total: this.builder.control(0)
     });
 
-    effect(()=>{
-      this.productForm.setValue({
-        saleNumber: this.service.productItem().saleNumber,
-        code: this.service.productItem().code,
-        name: this.service.productItem().name,
-        quantity: this.service.productItem().quantity,
-        price: this.service.productItem().price,
-        total: this.service.productItem().total,
-      })
+    effect(() => {
       const item = this.service.productItem();
-      if (item?.saleNumber != null && item.saleNumber > 0) {
-        this.buttonText = "Update";
-      }      
-
-      this.buttonText = item?.saleNumber && item.saleNumber > 0
-      ? this.translation.translations().updateProduct
-      : this.translation.translations().addProduct;
+      this.productForm.setValue({
+        saleNumber: item.saleNumber,
+        code: item.code,
+        name: item.name,
+        quantity: item.quantity,
+        price: item.price,
+        total: item.total,
+      });
     });
-
-    this.buttonText = this.translation.translations().addProduct;
   }
 
   addProduct() {
-    let quantity = this.productForm.value.quantity as number;
-    let price = this.productForm.value.price as number;
-    let total = quantity * price;
-    let saleNumber = this.productForm.value.saleNumber as number;
+    const quantity = this.productForm.value.quantity as number;
+    const price = this.productForm.value.price as number;
+    const total = quantity * price;
+    const saleNumber = this.productForm.value.saleNumber as number;
 
-    const obj: Product={
+    const obj = {
       saleNumber: 0,
-      code: this.productForm.value.code as string,
-      name: this.productForm.value.name as string,
-      price: price,
-      quantity: quantity,
-      total: total
-    }
-    if(saleNumber == 0){
-      const maxId = this.service.productList().length > 0? 
-      Math.max(...this.service.productList().map(item => item.saleNumber ?? 0)) : 0;
+      code: this.productForm.value.code,
+      name: this.productForm.value.name,
+      price,
+      quantity,
+      total
+    };
+
+    if (saleNumber === 0) {
+      const maxId = this.service.productList().length > 0
+        ? Math.max(...this.service.productList().map(item => item.saleNumber ?? 0))
+        : 0;
       obj.saleNumber = maxId + 1;
       this.service.addProduct(obj);
-    }else{
+    } else {
       obj.saleNumber = saleNumber;
       this.service.updateProduct(obj);
     }
-    this.productForm.setValue(
-      {saleNumber:0, code: '', name: '',
-        quantity: 1,
-        price: 0,
-        total: 0
-      }
-    )
-    this.buttonText = "Add Product"
+
+    this.productForm.setValue({
+      saleNumber: 0,
+      code: '',
+      name: '',
+      quantity: 1,
+      price: 0,
+      total: 0
+    });
   }
 
-  productChange(element:any){
-    let productName = element.target['options'][element.target['options'].selectedIndex].text;
+  productChange(element: any) {
+    const productName = element.target['options'][element.target['options'].selectedIndex].text;
     this.productForm.controls['name'].setValue(productName);
   }
 }
