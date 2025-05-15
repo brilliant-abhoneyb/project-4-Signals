@@ -51,7 +51,6 @@ export class ProductAddComponent {
     const price = this.productForm.value.price as number;
     const total = quantity * price;
     const saleNumber = this.productForm.value.saleNumber as number;
-
     const obj = {
       saleNumber: 0,
       code: this.productForm.value.code,

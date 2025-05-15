@@ -5,9 +5,6 @@ import { Product } from '../models/product.model';
   providedIn: 'root'
 })
 export class MainService {
-
-  constructor() { }
-
   productList=signal<Product[]>([]);
   productItem=signal<Product>({
     saleNumber: 0,
@@ -17,7 +14,7 @@ export class MainService {
     quantity: 1,
     total: 0
   })
-
+  
 
   addProduct(product:Product){
     this.productList.update((previous: Product[]) => [...previous, product]);

@@ -18,6 +18,10 @@
     width: 25%;
 }
 
+.element__group-label{
+    white-space: nowrap;
+}
+
 .form__control-dropdown{
     width: 100%;
 }

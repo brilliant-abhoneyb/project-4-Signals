@@ -5,8 +5,6 @@ import { Injectable, computed, signal } from '@angular/core';
 })
 export class TranslationService {
   language = signal<'en' | 'ru' | 'ja'>('en');
-  
-  constructor() { }
 
   private readonly TRANSLATIONS = {
     en: {

@@ -2,7 +2,7 @@
     <div class="card__content">
         <div class="card__content-element card__content-element-dropdown">
             <div class="element__group">
-                <label>{{ translation.translations().product }}</label>
+                <label class="element__group-label">{{ translation.translations().product }}</label>
                 <select class="form__control form__control-dropdown" formControlName="code" (change)="productChange($event)">
                     <option value="001">{{ translation.translations().water }}</option>
                     <option value="002">{{ translation.translations().rice }}</option>
