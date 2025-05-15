@@ -2,6 +2,7 @@ import { Component, effect } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MainService } from '../service/main.service';
 import { Product } from '../models/product.model';
+import { TranslationService } from '../service/translation.service';
 
 @Component({
   standalone: false,
@@ -14,8 +15,9 @@ export class ProductAddComponent {
   buttonText="Add Product"
 
   constructor(
-    private builder:FormBuilder,
-    public service: MainService
+    private builder: FormBuilder,
+    public service: MainService,
+    public translation: TranslationService
   ) {
     this.productForm = this.builder.group({
       saleNumber: this.builder.control(0),
@@ -39,7 +41,13 @@ export class ProductAddComponent {
       if (item?.saleNumber != null && item.saleNumber > 0) {
         this.buttonText = "Update";
       }      
-    })
+
+      this.buttonText = item?.saleNumber && item.saleNumber > 0
+      ? this.translation.translations().updateProduct
+      : this.translation.translations().addProduct;
+    });
+
+    this.buttonText = this.translation.translations().addProduct;
   }
 
   addProduct() {

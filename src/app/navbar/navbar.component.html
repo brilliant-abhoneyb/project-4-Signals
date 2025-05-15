@@ -1,8 +1,8 @@
 <div class="navbar__container">
   <nav class="navbar__content">
-    <a class="navbar__link" href="#">{{ translations().main }}</a>
-    <a class="navbar__link" href="#">{{ translations().catalog }}</a>
-    <a class="navbar__link" href="#">{{ translations().about }}</a>
+    <a class="navbar__link" href="#">{{ translation.translations().main }}</a>
+    <a class="navbar__link" href="#">{{ translation.translations().catalog }}</a>
+    <a class="navbar__link" href="#">{{ translation.translations().about }}</a>
 
     <div class="dropdown">
       <select (change)="changeLanguage($event)">

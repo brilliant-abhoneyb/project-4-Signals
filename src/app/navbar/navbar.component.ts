@@ -1,4 +1,5 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component} from '@angular/core';
+import { TranslationService } from '../service/translation.service';
 
 @Component({
   standalone: false,
@@ -7,31 +8,10 @@ import { Component, computed, signal } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  language = signal<'en' | 'ru' | 'ja'>('en');
-
-  private readonly TRANSLATIONS = {
-    en: {
-      main: 'Main',
-      catalog: 'Catalog',
-      about: 'About'
-    },
-    ru: {
-      main: 'Главная',
-      catalog: 'Каталог',
-      about: 'О проекте'
-    },
-    ja: {
-      main: 'メイン',
-      catalog: 'カタログ',
-      about: '約'
-    }
-  };
-
-  translations = computed(() => this.TRANSLATIONS[this.language()]);
+  constructor(public translation: TranslationService) {}
 
   changeLanguage(event: Event) {
-    const select = event.target as HTMLSelectElement;
-    const lang = select.value as 'en' | 'ru' | 'ja';
-    this.language.set(lang);
+    const lang = (event.target as HTMLSelectElement).value as 'en' | 'ru' | 'ja';
+    this.translation.setLanguage(lang);
   }
 }

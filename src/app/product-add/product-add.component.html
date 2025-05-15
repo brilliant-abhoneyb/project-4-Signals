@@ -2,31 +2,31 @@
     <div class="card__content">
         <div class="card__content-element card__content-element-dropdown">
             <div class="element__group">
-                <label>Product</label>
+                <label>{{ translation.translations().product }}</label>
                 <select class="form__control form__control-dropdown" formControlName="code" (change)="productChange($event)">
-                    <option value="001">Water</option>
-                    <option value="002">Rice</option>
-                    <option value="003">Sugar</option>
-                    <option value="004">Poridge</option>
-                    <option value="005">Bread</option>
+                    <option value="001">{{ translation.translations().water }}</option>
+                    <option value="002">{{ translation.translations().rice }}</option>
+                    <option value="003">{{ translation.translations().sugar }}</option>
+                    <option value="004">{{ translation.translations().porridge }}</option>
+                    <option value="005">{{ translation.translations().bread }}</option>
                 </select>
             </div>
         </div>
         <div class="card__content-element">
             <div class="element__group">
-                <label>Quantity</label>
+                <label>{{ translation.translations().quantity }}</label>
                 <input class="form__control form__control-input" formControlName="quantity">
             </div>
         </div>
         <div class="card__content-element">
             <div class="element__group">
-                <label>Price</label>
+                <label>{{ translation.translations().price }}</label>
                 <input class="form__control form__control-input" formControlName="price">
             </div>
         </div>
         <div class="card__content-element">
             <div class="element__group">
-                <button class="button" type="submit">Add Product</button>
+                <button class="button" type="submit">{{ buttonText }}</button>
             </div>
         </div>
     </div>

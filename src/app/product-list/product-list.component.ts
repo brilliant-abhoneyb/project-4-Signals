@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MainService } from '../service/main.service';
+import { TranslationService } from '../service/translation.service';
 
 @Component({
   standalone: false,
@@ -8,7 +9,10 @@ import { MainService } from '../service/main.service';
   styleUrl: './product-list.component.css'
 })
 export class ProductListComponent {
-  constructor(public service:MainService) {}
+  constructor(
+    public service: MainService,
+    public translation: TranslationService
+  ) {}
 
   deleteItem(saleNumber:any) {
     this.service.deleteProduct(saleNumber)

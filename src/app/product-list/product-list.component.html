@@ -3,13 +3,13 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Sale Nunber</th>
-                    <th>Code</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                    <th>Action</th>
+                    <th>{{ translation.translations().saleNumber }}</th>
+                    <th>{{ translation.translations().code }}</th>
+                    <th>{{ translation.translations().name }}</th>
+                    <th>{{ translation.translations().price }}</th>
+                    <th>{{ translation.translations().quantity }}</th>
+                    <th>{{ translation.translations().total }}</th>
+                    <th>{{ translation.translations().action }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,8 +22,8 @@
                     <td>{{item.total}}</td>
                     <td class="buttons">
                         <div class="buttons__container">
-                            <a class="button" (click)="updateItemData(item.saleNumber)">Edit</a>
-                            <a class="button" (click)="deleteItem(item.saleNumber)">Delete</a>
+                            <a class="button" (click)="updateItemData(item.saleNumber)">{{ translation.translations().edit }}</a>
+                            <a class="button" (click)="deleteItem(item.saleNumber)">{{ translation.translations().delete }}</a>
                         </div>
                     </td>
                 </tr>
